@@ -1,7 +1,19 @@
-import React from "react";
+import { useState } from "react";
 import { languages } from "./languages";
 
+/**
+ * Goal: Build out the main parts of our app
+ *
+ * Challenge:
+ * Display the keyboard ⌨️. Use <button>s for each letter
+ * since it'll need to be clickable and tab-accessible.
+ */
+
 export default function AssemblyEndgame() {
+  const [currentWord, setCurrentWord] = useState("react");
+
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
   const languageElements = languages.map((lang) => {
     const styles = {
       backgroundColor: lang.backgroundColor,
@@ -13,6 +25,15 @@ export default function AssemblyEndgame() {
       </span>
     );
   });
+
+  const letterElements = currentWord
+    .split("")
+    .map((letter, index) => <span key={index}>{letter.toUpperCase()}</span>);
+
+  const keyboardElements = alphabet
+    .split("")
+    .map((letter) => <button key={letter}>{letter.toUpperCase()}</button>);
+
   return (
     <main>
       <header>
@@ -27,6 +48,9 @@ export default function AssemblyEndgame() {
         <p>Well done! 🎉</p>
       </section>
       <section className="language-chips">{languageElements}</section>
+      <section className="word">{letterElements}</section>
+      <section className="keyboard">{keyboardElements}</section>
+      <button className="new-game">New Game</button>
     </main>
   );
 }
