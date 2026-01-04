@@ -1,17 +1,6 @@
 import { useState } from "react";
 import { languages } from "./languages";
 
-/**
- * Goal: Allow the user to start guessing the letters
- *
- * Challenge: Create a new array in state to hold user's
- * guessed letters. When the user chooses a letter, add
- * that letter to this state array.
- *
- * Don't worry about whether it was a right or wrong
- * guess yet.
- */
-
 export default function AssemblyEndgame() {
   const [currentWord, setCurrentWord] = useState("react");
   const [guessedLetters, setGuessedLetters] = useState([]);
